@@ -1,0 +1,39 @@
+# https://github.com/awesome-containers/static-bash
+ARG STATIC_BASH_VERSION=5.2.15
+ARG STATIC_BASH_IMAGE=ghcr.io/awesome-containers/static-bash
+
+# https://github.com/awesome-containers/static-xz
+ARG STATIC_XZ_VERSION=5.4.1
+ARG STATIC_XZ_IMAGE=ghcr.io/awesome-containers/static-xz
+
+# https://github.com/awesome-containers/alpine-build-essential
+ARG BUILD_ESSENTIAL_VERSION=3.17
+ARG BUILD_ESSENTIAL_IMAGE=ghcr.io/awesome-containers/alpine-build-essential
+
+
+FROM $STATIC_BASH_IMAGE:$STATIC_BASH_VERSION-slim AS static-bash
+FROM $STATIC_XZ_IMAGE:$STATIC_XZ_VERSION AS static-xz
+FROM $BUILD_ESSENTIAL_IMAGE:$BUILD_ESSENTIAL_VERSION AS build
+
+WORKDIR /src/xz
+COPY --from=static-xz /bin/ ./
+
+# hadolint ignore=SC2044,DL4006
+RUN set -xeu; \
+    rm -rf bash sh; \
+    for bin in $(find ./ -executable -type f); do \
+        file "$bin" -b --mime-type | grep -qw 'application/x-executable' || \
+            continue; \
+        upx --no-progress --no-color "$bin"; \
+        upx -t --no-progress --no-color "$bin"; \
+        ! ldd "$bin" && :; \
+    done; \
+    chmod -cR 755 ./*; \
+    chown -cR 0:0 ./*; \
+    ./xz --version; \
+    ln -s bash sh
+
+
+# slim static xz image
+FROM static-bash
+COPY --from=build /src/xz/ /bin/
