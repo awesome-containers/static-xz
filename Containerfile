@@ -13,7 +13,7 @@ FROM $BUILD_ESSENTIAL_IMAGE:$BUILD_ESSENTIAL_VERSION AS build
 # hadolint ignore=DL3018
 RUN apk add --no-cache clang
 
-# https://git.savannah.gnu.org/cgit/tar.git
+# https://tukaani.org/xz/
 ARG XZ_VERSION=5.4.1
 
 WORKDIR /src/xz
