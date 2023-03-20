@@ -6,23 +6,23 @@ Statically linked [XZ Utils][XZ] container image with [Bash]
 
 ```bash
 ghcr.io/awesome-containers/static-xz:latest
-ghcr.io/awesome-containers/static-xz:5.4.1
+ghcr.io/awesome-containers/static-xz:5.4.2
 
 docker.io/awesomecontainers/static-xz:latest
-docker.io/awesomecontainers/static-xz:5.4.1
+docker.io/awesomecontainers/static-xz:5.4.2
 ```
 
 Slim statically linked [XZ Utils][XZ] container image with [Bash] and
 packaged with [UPX]
 
-> ~ 864K (578K bash)
+> ~ 865K (578K bash)
 
 ```bash
 ghcr.io/awesome-containers/static-xz:latest-slim
-ghcr.io/awesome-containers/static-xz:5.4.1-slim
+ghcr.io/awesome-containers/static-xz:5.4.2-slim
 
 docker.io/awesomecontainers/static-xz:latest-slim
-docker.io/awesomecontainers/static-xz:5.4.1-slim
+docker.io/awesomecontainers/static-xz:5.4.2-slim
 ```
 
 [XZ]: https://tukaani.org/xz/

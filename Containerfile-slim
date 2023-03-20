@@ -3,7 +3,7 @@ ARG STATIC_BASH_VERSION=5.2.15
 ARG STATIC_BASH_IMAGE=ghcr.io/awesome-containers/static-bash
 
 # https://github.com/awesome-containers/static-xz
-ARG STATIC_XZ_VERSION=5.4.1
+ARG STATIC_XZ_VERSION=5.4.2
 ARG STATIC_XZ_IMAGE=ghcr.io/awesome-containers/static-xz
 
 # https://github.com/awesome-containers/alpine-build-essential

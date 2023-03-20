@@ -14,7 +14,7 @@ FROM $BUILD_ESSENTIAL_IMAGE:$BUILD_ESSENTIAL_VERSION AS build
 RUN apk add --no-cache clang
 
 # https://tukaani.org/xz/
-ARG XZ_VERSION=5.4.1
+ARG XZ_VERSION=5.4.2
 
 WORKDIR /src/xz
 RUN set -xeu; \
